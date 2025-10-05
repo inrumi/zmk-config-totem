@@ -126,17 +126,6 @@ SIMPLE_MORPH(dot_inner_morph, CTL, &kp COLON, &kp GREATER_THAN)
 ZMK_CONDITIONAL_LAYER(num_layer, NAV SYM, NUM)
 
 / {
-    trackball_listener {
-        compatible = "zmk,input-listener";
-        device = <&trackball_split>;
-
-        scroll {
-            layers = <NAV>;
-            input-processors = <&zip_xy_scaler 1 20>, <&zip_xy_to_scroll_mapper>, <&zip_scroll_transform (INPUT_TRANSFORM_Y_INVERT)>;
-        };
-
-    };
-
     behaviors {
         kt_on: key_toggle_on_only {
             compatible = "zmk,behavior-key-toggle";
