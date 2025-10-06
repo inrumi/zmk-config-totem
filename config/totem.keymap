@@ -102,12 +102,17 @@ ZMK_TRI_STATE(tabswap, bindings = <&kt_on LCTRL>, <&kp TAB>, <&kt_off LCTRL>; ig
   ZMK_MOD_MORPH(NAME, mods = <(MOD_L##MOD | MOD_R##MOD)>;                      \
                 bindings = <BINDING1>, <BINDING2>;)
 
-// Tap: space | Shift + tap: dot -> space -> sticky shift | Hold: nav layer.
+// Tap: space | Shift + tap: space -> sticky shift | Hold: nav layer.
 ZMK_HOLD_TAP(lt_spc, bindings = <&mo>, <&spc_morph>; flavor = "balanced";
              tapping-term-ms = <200>; quick-tap-ms = <200>;)
 SIMPLE_MORPH(spc_morph, SFT, &kp SPACE, &dot_spc)
 ZMK_MACRO(dot_spc, bindings = <&kp SPACE>; wait-ms = <0>;
           tap-ms = <5>;)
+
+// Tap: excl | Shift + tap: qmark. | Hold: fun layer
+ZMK_HOLD_TAP(lt_excl, bindings = <&mo>, <&excl_morph>; flavor = "balanced";
+             tapping-term-ms = <200>; quick-tap-ms = <200>;)
+SIMPLE_MORPH(excl_morph, SFT, &kp EXCL, &kp QMARK)
 
 ZMK_HOLD_TAP(lt_undo, bindings = <&mo>, <&kp>; flavor = "balanced";
              tapping-term-ms = <200>; quick-tap-ms = <200>;)
@@ -121,6 +126,7 @@ SIMPLE_MORPH(comma_inner_morph, CTL, &kp SEMICOLON, &kp LESS_THAN)
 // Tap: dot | Shift + tap: colon | Ctrl + shift + tap: >.
 SIMPLE_MORPH(dot_morph, SFT, &kp DOT, &dot_inner_morph)
 SIMPLE_MORPH(dot_inner_morph, CTL, &kp COLON, &kp GREATER_THAN)
+
 
 // Enable FUN layer if NAV and SYM are active
 ZMK_CONDITIONAL_LAYER(num_layer, NAV SYM, NUM)
@@ -155,7 +161,7 @@ ZMK_CONDITIONAL_LAYER(num_layer, NAV SYM, NUM)
     //             ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
     //             ┃     A     ┃     R     ┃     S     ┃     T     ┃     G     ┃   ┃     M     ┃     N     ┃     E     ┃     I     ┃     O     ┃
     // ┏━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┓
-    // ┃    ESC    ┃  Z / SYM  ┃     X     ┃     C     ┃     D     ┃     V     ┃   ┃     K     ┃     H     ┃     ,     ┃     .     ┃  / / FUN  ┃   BSPC    ┃
+    // ┃    ESC    ┃  Z / SYM  ┃     X     ┃     C     ┃     D     ┃     V     ┃   ┃     K     ┃     H     ┃     ,     ┃     .     ┃  ! / FUN  ┃   BSPC    ┃
     // ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
     //                                     ┃           ┃ SPACE/NAV ┃           ┃   ┃           ┃ MAG SHIFT ┃           ┃
     //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
@@ -163,7 +169,7 @@ ZMK_CONDITIONAL_LAYER(num_layer, NAV SYM, NUM)
     // ╷           ╷           ╷           ╷           ╷           ╷           ╷   ╷           ╷           ╷           ╷           ╷           ╷           ╷
                     &kp Q       &kp W       &kp F       &kp P       &kp B           &kp J       &kp L       &kp U       &kp Y       &kp SQT
                     &hml LSHIFT A &hml LCTRL R &hml LALT S &hml LGUI T &kp G        &kp M       &hmr LGUI N &hmr LALT E &hmr LCTRL I &hmr RSHIFT O
-        &kp ESC     &lt SYM Z   &kp X       &kp C       &kp D       &kp V           &kp K       &kp H       &comma_morph &dot_morph &lt FUN FSLH &kp BSPC
+        &kp ESC     &lt SYM Z   &kp X       &kp C       &kp D       &kp V           &kp K       &kp H       &comma_morph &dot_morph &lt_excl FUN 0 &kp BSPC
                                             XXX         &lt_spc NAV 0 XXX           XXX         MAGIC_SHIFT XXX
                             >;
             };
@@ -205,7 +211,7 @@ ZMK_CONDITIONAL_LAYER(num_layer, NAV SYM, NUM)
     //             ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
     //             ┃   SHIFT   ┃   CTRL    ┃    ALT    ┃    GUI    ┃     ^     ┃   ┃     &     ┃     [     ┃     ]     ┃     `     ┃     \     ┃
     // ┏━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┓
-    // ┃    ESC    ┃ █████████ ┃     |     ┃     {     ┃     }     ┃     ~     ┃   ┃     _     ┃     <     ┃     >     ┃     +     ┃  ! / FUN  ┃   BSPC    ┃
+    // ┃    ESC    ┃ █████████ ┃     |     ┃     {     ┃     }     ┃     ~     ┃   ┃     _     ┃     <     ┃     >     ┃     +     ┃     /     ┃   BSPC    ┃
     // ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
     //                                     ┃           ┃ SPACE/NAV ┃           ┃   ┃           ┃ MAG SHIFT ┃           ┃
     //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
@@ -214,7 +220,7 @@ ZMK_CONDITIONAL_LAYER(num_layer, NAV SYM, NUM)
 
                     ___         &kp AT      &kp HASH    &kp DLLR    &kp PRCNT       &kp ASTRK   &kp LPAR    &kp RPAR   &kp MINUS    &kp EQUAL
                     ___         ___         ___         ___         &kp CARET       &kp AMPS    &kp LBKT    &kp RBKT   &kp GRAVE    &kp BSLH
-        ___         ___         &kp PIPE    &kp LT    &kp GT        &kp TILDE       &kp UNDER   &kp LBRC    &kp RBRC   &kp PLUS     &kp EXCL    ___
+        ___         ___         &kp PIPE    &kp LBRC    &kp RBRC    &kp TILDE       &kp UNDER   &kp LT      &kp GT     &kp PLUS     &kp FLASH    ___
                                             ___         ___         ___             ___         ___         ___
                             >;
             };
