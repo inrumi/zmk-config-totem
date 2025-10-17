@@ -117,12 +117,12 @@ ZMK_MACRO_ONE_PARAM(tap_macro, bindings = <&macro_param_1to1>, <&macro_tap &kp M
 // Tap: Comma | Shift + tap: : | Hold: <.
 #define COMMA_LT &mt_comma LT 0
 ZMK_HOLD_TAP(mt_comma, bindings = <&tap_macro>, <&comma_morph>; flavor = "tap-preferred"; tapping-term-ms = <160>; quick-tap-ms = <QUICK_TAP_MS>; require-prior-idle-ms = <150>;)
-SIMPLE_MORPH(comma_morph, SFT, &kp COMMA, &kp SEMI)
+SIMPLE_MORPH(comma_morph, SFT, &kp COMMA, &kp COLON)
 
 // Tap: Dot | Shift + tap: ; | Hold: >.
 #define DOT_GT &mt_dot GT 0
 ZMK_HOLD_TAP(mt_dot, bindings = <&tap_macro>, <&dot_morph>; flavor = "tap-preferred"; tapping-term-ms = <160>; quick-tap-ms = <QUICK_TAP_MS>; require-prior-idle-ms = <150>;)
-SIMPLE_MORPH(dot_morph, SFT, &kp DOT, &kp COLON)
+SIMPLE_MORPH(dot_morph, SFT, &kp DOT, &kp SEMI)
 
 
 // Tap: excl | Shift + tap: qmark. | Hold: fun layer
