@@ -198,7 +198,7 @@ ZMK_CONDITIONAL_LAYER(fun_layer, NAV SYM, NUM)
     // ╷           ╷           ╷           ╷           ╷           ╷           ╷   ╷           ╷           ╷           ╷           ╷           ╷           ╷
                     &kp ESC     &kp TAB     &appswap    &winswap    &tabswap        &kp PG_UP   &kp BSPC    &kp UP      &kp DEL     ___
                     &sk LSHIFT  &sk LCTRL   &sk LALT    &sk LGUI    ___             &kp PG_DN   &kp LEFT    &kp DOWN    &kp RIGHT   ___
-        ___         &lt_undo LG(Z) cut      copy        redo        paste           ___         ___         ___         ___         &kp ENTER   ___
+        ___         &lt_undo SYM LG(Z) cut      copy        redo        paste           ___         ___         ___         ___         &kp ENTER   ___
                                             ___         ___         ___             ___         ___         ___
                             >;
             };
