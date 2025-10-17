@@ -111,9 +111,9 @@ ZMK_HOLD_TAP(lt_spc,
         hold-trigger-on-release;                                               \
         quick-tap-ms = <QUICK_TAP_MS>;)
 
-// Tap: Dot or Comma | Hold: < or >.
-#define COMMA_LT &hold_once LT COMMA
-#define DOT_GT &hold_once GT DOT
+// Tap: Dot or Comma | Hold: : or ;.
+#define COMMA_COLON &hold_once COLON COMMA
+#define DOT_SEMI &hold_once SEMI DOT
 ZMK_MACRO_ONE_PARAM(macro_honce, bindings = <&macro_param_1to1>, <&macro_tap &kp MACRO_PLACEHOLDER>;)
 ZMK_BEHAVIOR(hold_once, hold_tap,                                              \
         flavor = "tap-preferred";                                              \
@@ -165,7 +165,7 @@ ZMK_CONDITIONAL_LAYER(fun_layer, NAV SYM, NUM)
     //             ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
     //             ┃     A     ┃     R     ┃     S     ┃     T     ┃     G     ┃   ┃     M     ┃     N     ┃     E     ┃     I     ┃     O     ┃
     // ┏━━━━━━━━━━━┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫━━━━━━━━━━━┓
-    // ┃    ESC    ┃  Z / SYM  ┃     X     ┃     C     ┃     D     ┃     V     ┃   ┃     K     ┃     H     ┃     ,     ┃     .     ┃  ! / FUN  ┃   BSPC    ┃
+    // ┃    ESC    ┃  Z / SYM  ┃     X     ┃     C     ┃     D     ┃     V     ┃   ┃     K     ┃     H     ┃     ,     ┃     .     ┃  / / FUN  ┃   BSPC    ┃
     // ┗━━━━━━━━━━━┗━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┛━━━━━━━━━━━┛
     //                                     ┃           ┃ SPACE/NAV ┃           ┃   ┃           ┃ MAGISHIFT ┃           ┃
     //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
@@ -173,7 +173,7 @@ ZMK_CONDITIONAL_LAYER(fun_layer, NAV SYM, NUM)
     // ╷           ╷           ╷           ╷           ╷           ╷           ╷   ╷           ╷           ╷           ╷           ╷           ╷           ╷
                     &kp Q       &kp W       &kp F       &kp P       &kp B           &kp J       &kp L       &kp U       &kp Y       &kp SQT
                     &hml LSHIFT A &hml LCTRL R &hml LALT S &hml LGUI T &kp G        &kp M       &hmr LGUI N &hmr LALT E &hmr LCTRL I &hmr RSHIFT O
-        &kp ESC     &lt SYM Z   &kp X       &kp C       &kp D       &kp V           &kp K       &kp H       COMMA_LT    DOT_GT      &lt_excl FUN 0 &kp BSPC
+        &kp ESC     &lt SYM Z   &kp X       &kp C       &kp D       &kp V           &kp K       &kp H       COMMA_COLON    DOT_SEMI &lt MOU FSLH &kp BSPC
                                             XXX    &lt_spc NAV SPACE XXX            XXX         MAGIC_SHIFT     XXX
                             >;
             };
@@ -198,7 +198,7 @@ ZMK_CONDITIONAL_LAYER(fun_layer, NAV SYM, NUM)
     // ╷           ╷           ╷           ╷           ╷           ╷           ╷   ╷           ╷           ╷           ╷           ╷           ╷           ╷
                     &kp ESC     &kp TAB     &appswap    &winswap    &tabswap        &kp PG_UP   &kp BSPC    &kp UP      &kp DEL     ___
                     &sk LSHIFT  &sk LCTRL   &sk LALT    &sk LGUI    ___             &kp PG_DN   &kp LEFT    &kp DOWN    &kp RIGHT   ___
-        ___         &lt_undo SYM LG(Z) cut      copy        redo        paste           ___         ___         ___         ___         &kp ENTER   ___
+        ___         &lt_undo SYM LG(Z) cut  copy        redo        paste           ___         ___         ___         ___         &kp ENTER   ___
                                             ___         ___         ___             ___         ___         ___
                             >;
             };
@@ -215,7 +215,7 @@ ZMK_CONDITIONAL_LAYER(fun_layer, NAV SYM, NUM)
     //             ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
     //             ┃   SHIFT   ┃   CTRL    ┃    ALT    ┃    GUI    ┃     ^     ┃   ┃     &     ┃     [     ┃     ]     ┃     `     ┃     \     ┃
     // ┏━━━━━━━━━━━┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫━━━━━━━━━━━┓
-    // ┃    ESC    ┃ █████████ ┃     ~     ┃     |     ┃     +     ┃     _     ┃   ┃     /     ┃     {     ┃     }     ┃     :     ┃     ;     ┃   BSPC    ┃
+    // ┃    ESC    ┃ █████████ ┃     ~     ┃     |     ┃     +     ┃     _     ┃   ┃     !     ┃     {     ┃     }     ┃     :     ┃     ;     ┃   BSPC    ┃
     // ┗━━━━━━━━━━━┗━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┛━━━━━━━━━━━┛
     //                                     ┃           ┃ SPACE/NAV ┃           ┃   ┃           ┃ MAGISHIFT ┃           ┃
     //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
@@ -224,7 +224,7 @@ ZMK_CONDITIONAL_LAYER(fun_layer, NAV SYM, NUM)
 
                     XXX         &kp AT      &kp HASH    &kp DLLR    &kp PRCNT       &kp ASTRK   &kp LPAR    &kp RPAR   &kp MINUS    &kp EQUAL
                     ___         ___         ___         ___         &kp CARET       &kp AMPS    &kp LBKT    &kp RBKT   &kp GRAVE    &kp BSLH
-        ___         XXX         &kp TILDE   &kp PIPE     &kp PLUS   &kp UNDER       &kp FSLH    &kp LBRC    &kp RBRC   &kp COLON    &kp SEMI    ___
+        ___         XXX         &kp TILDE   &kp PIPE     &kp PLUS   &kp UNDER       &kp EXCL    &kp LBRC    &kp RBRC   &kp COLON    &kp SEMI    ___
                                             ___         ___         ___             ___         ___         ___
                             >;
             };
