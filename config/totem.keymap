@@ -239,7 +239,7 @@ ZMK_CONDITIONAL_LAYER(fun_layer, NAV SYM, NUM)
     // ╷           ╷           ╷           ╷           ╷           ╷           ╷   ╷           ╷           ╷           ╷           ╷           ╷           ╷
                     XXX         &kp F7      &kp F8      &kp F9      &kp F12         ___         &kp N7      &kp N8      &kp N9      &kp BSPC
                     &kp LSHIFT  &hml LCTRL F4 &hml LALT F5 &hml LGUI F6 &kp F11     ___         &hmr LGUI N4 &hmr LALT N5 &hmr LCTRL N6 &hmr RSHIFT N0
-        ___         XXX         &kp F1      &kp F2      &kp F3      &kp F10         &kp COLON   &kp N1      &kp N2      &kp N3      &lt MOU DOT ___
+        ___         XXX         &kp F1      &kp F2      &kp F3      &kp F10         &kp COLON   &kp N1      &kp N2      &kp N3      &kp DOT     ___
                                             ___         ___         ___             ___         ___         ___
                             >;
             };
