@@ -191,8 +191,8 @@ ZMK_CONDITIONAL_LAYER(fun_layer, NAV NUM, SYM)
     //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
      bindings = <
     // ╷           ╷           ╷           ╷           ╷           ╷           ╷   ╷           ╷           ╷           ╷           ╷           ╷           ╷
-                    &kp ESC     &kp TAB     &appswap    &winswap    &tabswap        ___         &kp BSCP    &kp UP      &kp DEL    ___
-                    &sk LSHIFT  &sk LCTRL   &sk LALT    &sk LGUI    ___             ___         &kp LEFT    &kp DOWN    &kp RIGHT  ___
+                    &kp ESC     &kp TAB     &appswap    &winswap    &tabswap        &kp PG_UP   &kp BSPC    &kp UP      &kp DEL    ___
+                    &sk LSHIFT  &sk LCTRL   &sk LALT    &sk LGUI    ___             &kp PG_DN   &kp LEFT    &kp DOWN    &kp RIGHT  ___
         ___         undo        cut         copy        redo        paste           ___         ___         ___         ___        &kp ENTER    ___
                                             ___         ___         ___             ___         ___         ___
                             >;
