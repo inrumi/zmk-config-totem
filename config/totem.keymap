@@ -137,7 +137,7 @@ ZMK_CONDITIONAL_LAYER(fun_layer, NAV NUM, SYM)
 / {
     behaviors {
         kt_on: key_toggle_on_only {
-            compatible = "zmk,behavior-key-toggle"
+            compatible = "zmk,behavior-key-toggle";
             #binding-cells = <1>;
             display-name = "Key Toggle On";
             toggle-mode = "on";
@@ -185,9 +185,9 @@ ZMK_CONDITIONAL_LAYER(fun_layer, NAV NUM, SYM)
     // ┃         2 - Navigation                ┃
     // ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
     //             ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓   ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓
-    //             ┃    ESC    ┃    TAB    ┃  NXT_APP  ┃  NXT_WIN  ┃  NXT_TAB  ┃   ┃           ┃ SCROLL UP ┃    UP     ┃ SCROLL DN ┃   BSPC    ┃
+    //             ┃    ESC    ┃    TAB    ┃  NXT_APP  ┃  NXT_WIN  ┃  NXT_TAB  ┃   ┃   PG UP   ┃   BSCP    ┃    UP     ┃    DEL    ┃           ┃
     //             ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
-    //             ┃   SHIFT   ┃   CTRL    ┃    ALT    ┃    GUI    ┃           ┃   ┃           ┃   LEFT    ┃   DOWN    ┃   RIGHT   ┃    DEL    ┃
+    //             ┃   SHIFT   ┃   CTRL    ┃    ALT    ┃    GUI    ┃           ┃   ┃   PG DN   ┃   LEFT    ┃   DOWN    ┃   RIGHT   ┃           ┃
     // ┏━━━━━━━━━━━┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫━━━━━━━━━━━┓
     // ┃    ESC    ┃    UNDO   ┃    CUT    ┃   COPY    ┃   REDO    ┃   PASTE   ┃   ┃           ┃           ┃           ┃           ┃   ENTER   ┃   BSPC    ┃
     // ┗━━━━━━━━━━━┗━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┛━━━━━━━━━━━┛
@@ -195,8 +195,8 @@ ZMK_CONDITIONAL_LAYER(fun_layer, NAV NUM, SYM)
     //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
      bindings = <
     // ╷           ╷           ╷           ╷           ╷           ╷           ╷   ╷           ╷           ╷           ╷           ╷           ╷           ╷
-                    &kp ESC     &kp TAB     &appswap    &winswap    &tabswap        ___         &kp BSCP    &kp UP      &kp BSPC    ___
-                    &sk LSHIFT  &sk LCTRL   &sk LALT    &sk LGUI    ___             ___         &kp LEFT    &kp DOWN    &kp RIGHT   ___
+                    &kp ESC     &kp TAB     &appswap    &winswap    &tabswap        &kp PG_UP   &kp BSCP    &kp UP      &kp BSPC    ___
+                    &sk LSHIFT  &sk LCTRL   &sk LALT    &sk LGUI    ___             &kp PG_DN   &kp LEFT    &kp DOWN    &kp RIGHT   ___
         ___         undo        cut         copy        redo        paste           ___         ___         ___         ___         &kp ENTER   ___
                                             ___         ___         ___             ___         ___         ___
                             >;
