@@ -8,14 +8,11 @@
             ╰──────────────┴─────────────╯
 */
 // This needs to be defined before the import
-#define ZMK_POINTING_DEFAULT_SCRL_VAL 20
-
 #include <behaviors.dtsi>
 
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
-#include <dt-bindings/zmk/pointing.h>
 
 #include "zmk-helpers/helper.h"
 #include "zmk-helpers/key-labels/totem.h"
@@ -195,9 +192,9 @@ ZMK_CONDITIONAL_LAYER(fun_layer, NAV NUM, SYM)
     //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
      bindings = <
     // ╷           ╷           ╷           ╷           ╷           ╷           ╷   ╷           ╷           ╷           ╷           ╷           ╷           ╷
-                    &kp ESC     &kp TAB     &appswap    &winswap    &tabswap        &kp PG_UP   &kp BSCP    &kp UP      &kp BSPC    ___
-                    &sk LSHIFT  &sk LCTRL   &sk LALT    &sk LGUI    ___             &kp PG_DN   &kp LEFT    &kp DOWN    &kp RIGHT   ___
-        ___         undo        cut         copy        redo        paste           ___         ___         ___         ___         &kp ENTER   ___
+                    &kp ESC     &kp TAB     &appswap    &winswap    &tabswap        ___         &kp BSCP    &kp UP      &kp DEL    ___
+                    &sk LSHIFT  &sk LCTRL   &sk LALT    &sk LGUI    ___             ___         &kp LEFT    &kp DOWN    &kp RIGHT  ___
+        ___         undo        cut         copy        redo        paste           ___         ___         ___         ___        &kp ENTER    ___
                                             ___         ___         ___             ___         ___         ___
                             >;
             };
