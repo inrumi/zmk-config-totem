@@ -103,7 +103,7 @@ ZMK_TRI_STATE(tabswap, bindings = <&kt_on LCTRL>, <&kp TAB>, <&kt_off LCTRL>; ig
                 bindings = <BINDING1>, <BINDING2>;)
 
 // Tap: space | Hold: num layer.
-#define NUM_KEYS LH2 RT1 RT2 RT3 RM1 RM2 RM3 RM4 RB0 RB1 RB2 RB3 RB4
+#define NUM_KEYS LH1 RT1 RT2 RT3 RM1 RM2 RM3 RM4 RB0 RB1 RB2 RB3 RB4
 #define LT_SPACE &lt_spc NUM SPACE
 ZMK_HOLD_TAP(lt_spc,
         bindings = <&mo>, <&kp>;                                               \
@@ -194,7 +194,7 @@ ZMK_CONDITIONAL_LAYER(fun_layer, NAV NUM, SYM)
                     &kp ESC     &kp TAB     &appswap    &winswap    &tabswap        &kp PG_UP   &kp BSPC    &kp UP      &kp DEL    ___
                     &sk LSHIFT  &sk LCTRL   &sk LALT    &sk LGUI    ___             &kp PG_DN   &kp LEFT    &kp DOWN    &kp RIGHT  ___
         ___         undo        cut         copy        redo        paste           ___         ___         ___         ___        &kp ENTER    ___
-                                            ___         ___         ___             ___         ___         ___
+                                            ___         ___         ___             ___         &mo NUM     ___
                             >;
             };
 
