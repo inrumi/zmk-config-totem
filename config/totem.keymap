@@ -29,8 +29,8 @@
 
 #define BASE 0
 #define NAV  1
-#define NUM  2
-#define SYM  3
+#define SYM  2
+#define NUM  3
 #define FUN  4
 
 &sk {
@@ -92,6 +92,17 @@ ZMK_MOD_MORPH(magic_shift_tap, bindings = <&sk LSHFT>, <&caps_word>; mods = <(MO
 
 /* Custom behaviors */
 
+// Defines an absolute behavior for the window swapper tristate
+ZMK_BEHAVIOR(kt_on,                                                            \
+        compatible = "zmk,behavior-key-toggle";                                \
+        #binding-cells = <1>;                                                  \
+        toggle-mode = "on";)
+
+ZMK_BEHAVIOR(kt_off,                                                           \
+        compatible = "zmk,behavior-key-toggle";                                \
+        #binding-cells = <1>;                                                  \
+        toggle-mode = "off";)
+
 // Swapper settings for all window contexts
 ZMK_TRI_STATE(appswap, bindings = <&kt_on LGUI>, <&kp TAB>, <&kt_off LGUI>; ignored-key-positions = <LT2 RT2 RM1 RM2 RM3>;)
 ZMK_TRI_STATE(winswap, bindings = <&kt_on LGUI>, <&kp GRAVE>, <&kt_off LGUI>; ignored-key-positions = <LT1 RT2 RM1 RM2 RM3>;)
@@ -103,13 +114,13 @@ ZMK_TRI_STATE(tabswap, bindings = <&kt_on LCTRL>, <&kp TAB>, <&kt_off LCTRL>; ig
                 bindings = <BINDING1>, <BINDING2>;)
 
 // Tap: space | Hold: num layer.
-#define NUM_KEYS LH1 RT1 RT2 RT3 RM1 RM2 RM3 RM4 RB0 RB1 RB2 RB3 RB4
-#define LT_SPACE &lt_spc NUM SPACE
+#define SYM_KEYS LT4 LT3 LT2 LT1 LT0 LM3 LM2 LM1 LM0 RT0 RT1 RT2 RT3 RT4 RM0 RM1 RM2 RM3 RM4 RB0 RB1 RB2 RB3 RB4
+#define LT_SPACE &lt_spc SYM SPACE
 ZMK_HOLD_TAP(lt_spc,
         bindings = <&mo>, <&kp>;                                               \
         flavor = "balanced";                                                   \
         tapping-term-ms = <200>;                                               \
-        hold-trigger-on-release; hold-trigger-key-positions = <NUM_KEYS>;      \
+        hold-trigger-on-release; hold-trigger-key-positions = <SYM_KEYS THUMBS>;      \
         quick-tap-ms = <200>;)
 
 // Macro to prevent holding and triggering multiple taps
@@ -127,24 +138,24 @@ SIMPLE_MORPH(dot_morph, SFT, &kp DOT, &kp COLON)
 
 /* Keymap */
 
-// Enable SYM layer if NAV and NUM are active
-ZMK_CONDITIONAL_LAYER(fun_layer, NAV NUM, SYM)
+// Enable NUM layer if NAV and SYM are active
+ZMK_CONDITIONAL_LAYER(fun_layer, NAV SYM, NUM)
 
 / {
-    behaviors {
-        kt_on: key_toggle_on_only {
-            compatible = "zmk,behavior-key-toggle";
-            #binding-cells = <1>;
-            display-name = "Key Toggle On";
-            toggle-mode = "on";
-        };
-        kt_off: key_toggle_off_only {
-            compatible = "zmk,behavior-key-toggle";
-            #binding-cells = <1>;
-            display-name = "Key Toggle Off";
-            toggle-mode = "off";
-        };
-    };
+//    behaviors {
+//        kt_on: key_toggle_on_only {
+//            compatible = "zmk,behavior-key-toggle";
+//            #binding-cells = <1>;
+//            display-name = "Key Toggle On";
+//            toggle-mode = "on";
+//        };
+//        kt_off: key_toggle_off_only {
+//            compatible = "zmk,behavior-key-toggle";
+//            #binding-cells = <1>;
+//            display-name = "Key Toggle Off";
+//            toggle-mode = "off";
+//        };
+//    };
 
     keymap {
                 compatible = "zmk,keymap";
@@ -162,7 +173,7 @@ ZMK_CONDITIONAL_LAYER(fun_layer, NAV NUM, SYM)
     // ┏━━━━━━━━━━━┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫━━━━━━━━━━━┓
     // ┃    ESC    ┃     Z     ┃     X     ┃     C     ┃     D     ┃     V     ┃   ┃     K     ┃     H     ┃     ,     ┃     .     ┃  / / FUN  ┃   BSPC    ┃
     // ┗━━━━━━━━━━━┗━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┛━━━━━━━━━━━┛
-    //                                     ┃           ┃    NAV    ┃ MAGISHIFT ┃   ┃           ┃ SPACE/NUM ┃           ┃
+    //                                     ┃           ┃    NAV    ┃ MAGISHIFT ┃   ┃           ┃ SPACE/SYM ┃           ┃
     //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
      bindings = <
     // ╷           ╷           ╷           ╷           ╷           ╷           ╷   ╷           ╷           ╷           ╷           ╷           ╷           ╷
@@ -187,15 +198,43 @@ ZMK_CONDITIONAL_LAYER(fun_layer, NAV NUM, SYM)
     // ┏━━━━━━━━━━━┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫━━━━━━━━━━━┓
     // ┃    ESC    ┃    UNDO   ┃    CUT    ┃   COPY    ┃   REDO    ┃   PASTE   ┃   ┃           ┃           ┃           ┃           ┃   ENTER   ┃   BSPC    ┃
     // ┗━━━━━━━━━━━┗━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┛━━━━━━━━━━━┛
-    //                                     ┃           ┃ █████████ ┃ MAGISHIFT ┃   ┃           ┃ SPACE/NUM ┃           ┃
+    //                                     ┃           ┃ █████████ ┃ MAGISHIFT ┃   ┃           ┃    SYM    ┃           ┃
     //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
      bindings = <
     // ╷           ╷           ╷           ╷           ╷           ╷           ╷   ╷           ╷           ╷           ╷           ╷           ╷           ╷
                     &kp ESC     &kp TAB     &appswap    &winswap    &tabswap        &kp PG_UP   &kp BSPC    &kp UP      &kp DEL    ___
                     &sk LSHIFT  &sk LCTRL   &sk LALT    &sk LGUI    ___             &kp PG_DN   &kp LEFT    &kp DOWN    &kp RIGHT  ___
         ___         undo        cut         copy        redo        paste           ___         ___         ___         ___        &kp ENTER    ___
-                                            ___         ___         ___             ___         &mo NUM     ___
+                                            ___         ___         ___             ___         &mo SYM     ___
                             >;
+            };
+
+// ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+
+
+            SYM {
+    display-name = "SYM";
+    // ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+    // ┃           3 - Symbols                 ┃
+    // ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+    //             ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓   ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓
+    //             ┃     !     ┃     @     ┃     #     ┃     $     ┃     %     ┃   ┃     *     ┃     (     ┃     )     ┃     -     ┃     =     ┃
+    //             ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
+    //             ┃           ┃     ~     ┃     |     ┃     +     ┃     ^     ┃   ┃     &     ┃     [     ┃     ]     ┃     `     ┃     \     ┃
+    // ┏━━━━━━━━━━━┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫━━━━━━━━━━━┓
+    // ┃    ESC    ┃           ┃           ┃           ┃           ┃           ┃   ┃     +     ┃     {     ┃     }     ┃     :     ┃     ;     ┃   BSPC    ┃
+    // ┗━━━━━━━━━━━┗━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┛━━━━━━━━━━━┛
+    //                                     ┃           ┃    NAV    ┃ MAGISHIFT ┃   ┃           ┃ █████████ ┃           ┃
+    //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
+     bindings = <
+    // ╷           ╷           ╷           ╷           ╷           ╷           ╷   ╷           ╷           ╷           ╷           ╷           ╷           ╷
+
+                    &kp EXCL    &kp AT      &kp HASH    &kp DLLR    &kp PRCNT       &kp ASTRK   &kp LPAR    &kp RPAR   &kp MINUS    &kp EQUAL
+                    ___         &kp TILDE   &kp PIPE    &kp PLUS    &kp CARET       &kp AMPS    &hmr LGUI LBKT &hmr LALT RBKT &hmr LCTRL GRAVE &hmr RSHIFT BSLH
+        ___         XXX         ___         ___         ___         ___             &kp UNDER    &kp LBRC    &kp RBRC   &kp COLON    &kp SEMI    ___
+                                            ___         ___         ___             ___         ___         ___
+                            >;
+
             };
 
 // ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
@@ -212,7 +251,7 @@ ZMK_CONDITIONAL_LAYER(fun_layer, NAV NUM, SYM)
     // ┏━━━━━━━━━━━┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫━━━━━━━━━━━┓
     // ┃    ESC    ┃           ┃    F1     ┃    F2     ┃    F3     ┃    F10    ┃   ┃     :     ┃     1     ┃     2     ┃     3     ┃     .     ┃   BSPC    ┃
     // ┗━━━━━━━━━━━┗━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┛━━━━━━━━━━━┛
-    //                                     ┃           ┃    NAV    ┃ MAGISHIFT ┃   ┃           ┃ █████████ ┃           ┃
+    //                                     ┃           ┃ █████████ ┃ MAGISHIFT ┃   ┃           ┃ █████████ ┃           ┃
     //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
      bindings = <
     // ╷           ╷           ╷           ╷           ╷           ╷           ╷   ╷           ╷           ╷           ╷           ╷           ╷           ╷
@@ -221,33 +260,6 @@ ZMK_CONDITIONAL_LAYER(fun_layer, NAV NUM, SYM)
         ___         XXX         &kp F1      &kp F2      &kp F3      &kp F10         &kp COLON   &kp N1      &kp N2      &kp N3      &kp DOT     ___
                                             ___         ___         ___             ___         ___         ___
                             >;
-            };
-
-// ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
-
-            SYM {
-    display-name = "SYM";
-    // ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-    // ┃           3 - Symbols                 ┃
-    // ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-    //             ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓   ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓
-    //             ┃     !     ┃     @     ┃     #     ┃     $     ┃     %     ┃   ┃     *     ┃     (     ┃     )     ┃     -     ┃     =     ┃
-    //             ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
-    //             ┃           ┃           ┃           ┃           ┃     ^     ┃   ┃     &     ┃     [     ┃     ]     ┃     `     ┃     \     ┃
-    // ┏━━━━━━━━━━━┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫━━━━━━━━━━━┓
-    // ┃    ESC    ┃           ┃           ┃     ~     ┃     |     ┃     _     ┃   ┃     +     ┃     {     ┃     }     ┃     :     ┃     ;     ┃   BSPC    ┃
-    // ┗━━━━━━━━━━━┗━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┛━━━━━━━━━━━┛
-    //                                     ┃           ┃ █████████ ┃ MAGISHIFT ┃   ┃           ┃ █████████ ┃           ┃
-    //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
-     bindings = <
-    // ╷           ╷           ╷           ╷           ╷           ╷           ╷   ╷           ╷           ╷           ╷           ╷           ╷           ╷
-
-                    &kp EXCL    &kp AT      &kp HASH    &kp DLLR    &kp PRCNT       &kp ASTRK   &kp LPAR    &kp RPAR   &kp MINUS    &kp EQUAL
-                    ___         ___         ___         ___         &kp CARET       &kp AMPS    &hmr LGUI LBKT &hmr LALT RBKT &hmr LCTRL GRAVE &hmr RSHIFT BSLH
-        ___         XXX         ___         &kp TILDE   &kp PIPE    &kp UNDER       &kp PLUS    &kp LBRC    &kp RBRC   &kp COLON    &kp SEMI    ___
-                                            ___         ___         ___             ___         ___         ___
-                            >;
-
             };
 
 // ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
@@ -264,7 +276,7 @@ ZMK_CONDITIONAL_LAYER(fun_layer, NAV NUM, SYM)
     // ┏━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┓
     // ┃    ESC    ┃  BT TOG   ┃   BT 1    ┃    BT 2   ┃   BT 3    ┃  BT CLR   ┃   ┃           ┃           ┃           ┃           ┃ █████████ ┃   BSPC    ┃
     // ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
-    //                                     ┃           ┃    NAV    ┃ MAGISHIFT ┃   ┃           ┃ SPACE/NUM ┃           ┃
+    //                                     ┃           ┃    NAV    ┃ MAGISHIFT ┃   ┃           ┃ SPACE/SYM ┃           ┃
     //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
      bindings = <
     // ╷           ╷           ╷           ╷           ╷           ╷           ╷   ╷           ╷           ╷           ╷           ╷           ╷           ╷
