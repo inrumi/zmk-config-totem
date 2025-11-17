@@ -92,10 +92,6 @@ ZMK_MOD_MORPH(magic_shift_tap, bindings = <&sk LSHFT>, <&caps_word>; mods = <(MO
 
 /* Custom behaviors */
 
-// Defines an absolute behavior for the window swapper tristate
-ZMK_BEHAVIOR(kt_on, key_toggle, #binding-cells = <1>; toggle-mode = "on";)
-ZMK_BEHAVIOR(kt_off, key_toggle, #binding-cells = <1>; toggle-mode = "off";)
-
 // Swapper settings for all window contexts
 ZMK_TRI_STATE(appswap, bindings = <&kt_on LGUI>, <&kp TAB>, <&kt_off LGUI>; ignored-key-positions = <LT2 RT2 RM1 RM2 RM3>;)
 ZMK_TRI_STATE(winswap, bindings = <&kt_on LGUI>, <&kp GRAVE>, <&kt_off LGUI>; ignored-key-positions = <LT1 RT2 RM1 RM2 RM3>;)
@@ -135,20 +131,20 @@ SIMPLE_MORPH(dot_morph, SFT, &kp DOT, &kp COLON)
 ZMK_CONDITIONAL_LAYER(fun_layer, NAV SYM, NUM)
 
 / {
-//    behaviors {
-//        kt_on: key_toggle_on_only {
-//            compatible = "zmk,behavior-key-toggle";
-//            #binding-cells = <1>;
-//            display-name = "Key Toggle On";
-//            toggle-mode = "on";
-//        };
-//        kt_off: key_toggle_off_only {
-//            compatible = "zmk,behavior-key-toggle";
-//            #binding-cells = <1>;
-//            display-name = "Key Toggle Off";
-//            toggle-mode = "off";
-//        };
-//    };
+    behaviors {
+        kt_on: key_toggle_on_only {
+            compatible = "zmk,behavior-key-toggle";
+            #binding-cells = <1>;
+            display-name = "Key Toggle On";
+            toggle-mode = "on";
+        };
+        kt_off: key_toggle_off_only {
+            compatible = "zmk,behavior-key-toggle";
+            #binding-cells = <1>;
+            display-name = "Key Toggle Off";
+            toggle-mode = "off";
+        };
+    };
 
     keymap {
                 compatible = "zmk,keymap";
