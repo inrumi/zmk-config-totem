@@ -211,7 +211,7 @@ ZMK_CONDITIONAL_LAYER(fun_layer, NAV SYM, NUM)
     //             ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
     //             ┃           ┃     ~     ┃     |     ┃     +     ┃     ^     ┃   ┃     &     ┃     [     ┃     ]     ┃     `     ┃     \     ┃
     // ┏━━━━━━━━━━━┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫━━━━━━━━━━━┓
-    // ┃    ESC    ┃           ┃           ┃           ┃           ┃           ┃   ┃     +     ┃     {     ┃     }     ┃     :     ┃     ;     ┃   BSPC    ┃
+    // ┃    ESC    ┃           ┃           ┃           ┃           ┃           ┃   ┃     _     ┃     {     ┃     }     ┃     :     ┃     ;     ┃   BSPC    ┃
     // ┗━━━━━━━━━━━┗━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┛━━━━━━━━━━━┛
     //                                     ┃           ┃    NAV    ┃ MAGISHIFT ┃   ┃           ┃ █████████ ┃           ┃
     //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
@@ -219,7 +219,7 @@ ZMK_CONDITIONAL_LAYER(fun_layer, NAV SYM, NUM)
     // ╷           ╷           ╷           ╷           ╷           ╷           ╷   ╷           ╷           ╷           ╷           ╷           ╷           ╷
 
                     &kp EXCL    &kp AT      &kp HASH    &kp DLLR    &kp PRCNT       &kp ASTRK   &kp LPAR    &kp RPAR   &kp MINUS    &kp EQUAL
-                    ___         &kp TILDE   &kp PIPE    &kp PLUS    &kp CARET       &kp AMPS    &hmr LGUI LBKT &hmr LALT RBKT &hmr LCTRL GRAVE &hmr RSHIFT BSLH
+                    ___ &hml LCTRL TILDE  &hml LALT PIPE  &hml LGUI PLUS &kp CARET &kp AMPS    &hmr LGUI LBKT &hmr LALT RBKT &hmr LCTRL GRAVE &hmr RSHIFT BSLH
         ___         XXX         ___         ___         ___         ___             &kp UNDER    &kp LBRC    &kp RBRC   &kp COLON    &kp SEMI    ___
                                             ___         ___         ___             ___         ___         ___
                             >;
