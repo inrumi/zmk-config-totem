@@ -93,8 +93,8 @@ ZMK_MOD_MORPH(magic_shift_tap, bindings = <&sk LSHFT>, <&caps_word>; mods = <(MO
 /* Custom behaviors */
 
 // Defines an absolute behavior for the window swapper tristate
-ZMK_BEHAVIOR(kt_on, key_toggle, toggle-mode = "on";)
-ZMK_BEHAVIOR(kt_off, key_toggle, toggle-mode = "off";)
+ZMK_BEHAVIOR(kt_on, key_toggle, #binding-cells = <1>; toggle-mode = "on";)
+ZMK_BEHAVIOR(kt_off, key_toggle, #binding-cells = <1>; toggle-mode = "off";)
 
 // Swapper settings for all window contexts
 ZMK_TRI_STATE(appswap, bindings = <&kt_on LGUI>, <&kp TAB>, <&kt_off LGUI>; ignored-key-positions = <LT2 RT2 RM1 RM2 RM3>;)
