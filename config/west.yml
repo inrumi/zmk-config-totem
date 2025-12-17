@@ -5,8 +5,8 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    # - name: englmaxi
-    #   url-base: https://github.com/englmaxi
+    - name: englmaxi
+      url-base: https://github.com/englmaxi
     - name: urob
       url-base: https://github.com/urob
   projects:
@@ -27,8 +27,8 @@ manifest:
       remote: urob
       revision: main
 
-    # - name: zmk-dongle-display
-    #   remote: englmaxi
-    #   revision: main
+    - name: zmk-dongle-display
+      remote: englmaxi
+      revision: main
   self:
     path: config
