@@ -177,7 +177,7 @@ ZMK_CONDITIONAL_LAYER(symcon_layer, NAV BASS, SYM)
                     &kp Q       &kp W       &kp F       &kp P       &kp B           &kp J       &kp L       &kp U       &kp Y       &kp SQT
                     &hml LSHIFT A &hml LCTRL R &hml LALT S &hml LGUI T &kp G        &kp M       &hmr LGUI N &hmr LALT E &hmr LCTRL I &hmr RSHIFT O
         &kp ESC     &kp Z       &kp X       &kp C       &kp D       &kp V           &kp K       &kp H       COMMA_LT    DOT_GT      &lt FUN FSLH &kp BSPC
-                                            XXX         &mo NAV     SMART_NUM       MAGIC_SHIFT LT_SPACE    XXX
+                                            XXX         &mo NAV     MAGIC_SHIFT     SMART_NUM   LT_SPACE    XXX
                             >;
             };
 
