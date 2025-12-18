@@ -7,6 +7,9 @@
 #include <dt-bindings/zmk/matrix_transform.h>
 #include "totem-physical-layout.dtsi"
 
+&default_layout {
+    transform = <&default_transform>;
+};
 
 / {
     chosen {
