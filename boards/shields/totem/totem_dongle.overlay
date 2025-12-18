@@ -2,7 +2,7 @@
 #include "totem-physical-layout.dtsi"
 
 &default_layout {
-    transform = <&matrix_transform>;
+    transform = <&default_transform>;
 };
 
 / {
@@ -12,7 +12,7 @@
         zmk,physical-layout = &default_layout;
     };
 
-    matrix_transform: keymap_transform_0 {
+    default_transform: keymap_transform_0 {
         compatible = "zmk,matrix-transform";
         columns = <10>;
         rows = <4>;
