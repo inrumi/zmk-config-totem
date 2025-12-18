@@ -1,3 +1,5 @@
+#include "totem-physical-layout.dtsi"
+
 / {
     chosen {
         zmk,kscan = &mock_kscan;
