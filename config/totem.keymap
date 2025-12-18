@@ -187,7 +187,7 @@ ZMK_CONDITIONAL_LAYER(symcon_layer, NAV BASS, SYM)
                     &kp Q       &kp W       &kp F       &kp P       &kp B           &kp J       &kp L       &kp U       &kp Y       &kp SQT
                     &hml LSHIFT A &hml LCTRL R &hml LALT S &hml LGUI T &kp G        &kp M       &hmr LGUI N &hmr LALT E &hmr LCTRL I &hmr RSHIFT O
         &kp ESC     &kp Z       &kp X       &kp C       &kp D       &kp V           &kp K       &kp H       COMMA_LT    DOT_GT      &lt FUN FSLH &kp BSPC
-                                            ___         &mo SYM     ___             ___         ___         ___
+                                            ___         ___         ___             ___         ___         ___
                             >;
             };
 
@@ -212,7 +212,7 @@ ZMK_CONDITIONAL_LAYER(symcon_layer, NAV BASS, SYM)
                     &kp ESC     &kp TAB     &appswap    &winswap    &tabswap        &kp PG_UP   XXX         &kp UP      XXX         &kp BSPC
                     &sk LSHIFT  &sk LCTRL   &sk LALT    &sk LGUI    ___             &kp PG_DN   &kp LEFT    &kp DOWN    &kp RIGHT   &kp DEL
         ___         undo        cut         copy        redo        paste           ___         ___         ___         ___         &kp ENTER    ___
-                                            ___         ___         ___             ___         &mo SYM     ___
+                                            ___         ___         ___             ___         &mo BASS    ___
                             >;
             };
 
